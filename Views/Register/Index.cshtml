@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Welcome";
+}
+<h1>Register</h1>
+
+<form action="/register" method="POST">
+    <label for="first_name" class="info">First Name: </label>
+    <input type="text" name="first_name" id="first_name"><br>
+
+    <label for="last_name" class="info">Last Name: </label>
+    <input type="text" name="last_name" id="last_name"><br>
+
+    <label for="email" class="info">Email: </label>
+    <input type="email" name="email" id="email"><br>
+
+    <label for="password" class="info">Password: </label>
+    <input type="password" name="password" id="password"><br>
+
+    <label for="config_password" class="info">Confirm Password: </label>
+    <input type="password" name="config_password" id="config_password"> <u><a href="/loginpage">Already Registered?</a></u><br>
+
+    <button type="submit" name="submit">Submit</button>
+</form>
+
+@{
+    foreach(var e in ViewBag.errors){
+        if(@e.Errors.Count > 0){
+            <p>@e.Errors[0].ErrorMessage</p>
+        }
+    }
+}

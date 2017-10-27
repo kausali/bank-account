@@ -1,0 +1,31 @@
+<h1>Welcome @ViewBag.ID.first_name!</h1>
+
+<h4>Current Balance: $@ViewBag.ID.balance</h4>
+
+<form action="/process" method="POST">
+    <label for="action">Deposit/Withdraw</label>
+    <input type="number" name="amount">
+    <input type="submit" name="submit">
+
+</form><br>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var t in ViewBag.AllTrans){
+                <tr>
+                    <td>@t.amount</td>
+                    <td>@t.type</td>
+                    <td>@t.created_at</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+@ViewBag.error
